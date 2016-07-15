@@ -56,9 +56,7 @@ public final class UserAgentProcessor extends AbstractProcessor {
 
         public UserAgentProcessor doCreate(String processorTag, Map<String, Object> config) throws Exception {
             String userAgentField = readStringProperty(TYPE, processorTag, config, "field");
-            String targetField = readStringProperty(TYPE, processorTag, config, "targetField");
-            System.out.println(userAgentField);
-            System.out.println(targetField);
+            String targetField = readStringProperty(TYPE, processorTag, config, "targetField", "useragent");
             return new UserAgentProcessor(processorTag, userAgentField, targetField);
         }
     }
