@@ -1,0 +1,21 @@
+esplugin {
+    description 'Ingest processor that uses analyzed User Agent'
+    classname 'org.elasticsearch.ingest.useragent.IngestUserAgentPlugin'
+}
+
+dependencies {
+    compile('is.tagomor.woothee:woothee-java:1.4.0')
+}
+
+compileJava.options.compilerArgs << "-Xlint:-rawtypes,-unchecked,-serial"
+compileTestJava.options.compilerArgs << "-Xlint:-rawtypes,-unchecked"
+
+bundlePlugin {
+    from("${project.buildDir}/ingest-useragent") {
+        into 'config/'
+    }
+}
+
+thirdPartyAudit.excludes = [
+        'org.ho.yaml.Yaml',
+]
